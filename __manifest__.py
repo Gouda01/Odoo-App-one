@@ -1,7 +1,7 @@
 {
     'name': "App One",
     'version': '17.0.0.1.0',
-    'depends': ['base'],
+    'depends': ['base', 'mail'],
     'author': "Mohamed Gouda",
     'category': '',
 

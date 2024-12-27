@@ -4,13 +4,14 @@ from odoo.exceptions import ValidationError
 
 class Property(models.Model) :
     _name = 'property'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(required=1)
+    name = fields.Char(required=1, tracking=1)
     description = fields.Text()
-    postcode = fields.Char(required=1)
-    date_availavlity = fields.Date()
-    expected_price = fields.Float()
-    selling_price = fields.Float()
+    postcode = fields.Char(required=1, tracking=1)
+    date_availavlity = fields.Date(tracking=1)
+    expected_price = fields.Float(tracking=1)
+    selling_price = fields.Float(tracking=1)
     diff = fields.Float(compute="_compute_diff", sotre=True)
     bedrooms = fields.Integer(required=1)
     leaving_area = fields.Integer()
