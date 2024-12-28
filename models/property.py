@@ -4,6 +4,7 @@ from odoo.exceptions import ValidationError
 
 class Property(models.Model) :
     _name = 'property'
+    _description = 'Property'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(required=1, tracking=1)
@@ -32,6 +33,7 @@ class Property(models.Model) :
     ])
     owner_id = fields.Many2one('owner')
     tag_ids = fields.Many2many('tag')
+    line_ids = fields.One2many('property.line', 'property_id')
 
 
     _sql_constraints = [
@@ -64,4 +66,14 @@ class Property(models.Model) :
     def action_sold(self):
         for rec in self:
             rec.state= "sold"
+
+
+class PropertyLine(models.Model) :
+    _name = 'property.line'
+
+    property_id = fields.Many2one('property')
+    area = fields.Float()
+    description = fields.Text()
+
+
 
