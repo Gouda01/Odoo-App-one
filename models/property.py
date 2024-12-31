@@ -24,6 +24,7 @@ class Property(models.Model) :
         ('draft','Draft'),
         ('pending','Pending'),
         ('sold','Sold'),
+        ('closed','Closed'),
     ], default='draft')
     garden_oriantation = fields.Selection([
         ('north', 'North'),
@@ -66,6 +67,10 @@ class Property(models.Model) :
     def action_sold(self):
         for rec in self:
             rec.state= "sold"
+
+    def action_closed(self):
+        for rec in self:
+            rec.state= "closed"
 
 
 class PropertyLine(models.Model) :
