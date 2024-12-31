@@ -1,1 +1,1 @@
-from . import property, owner, tag, res_partner
+from . import property, owner, tag, res_partner, building
